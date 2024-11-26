@@ -1,6 +1,53 @@
-<p>lesson-edit-form works!</p>
-<a routerLink="/">Home</a>
-<button type="button" class="btn btn-primary"
-        (click)="onClickSubmit()">Submit</button>
-<button [routerLink]="['/lesson', 1234 ]" class="btn btn-primary">Detail for lesson 1234</button>
+<div class="container">
+  <form [formGroup]="lessonEditForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" type="text" class="form-control" formControlName="title" placeholder="Enter title">
+      <div *ngIf="lessonEditForm.get('title')?.invalid && lessonEditForm.get('title')?.touched" class="text-danger">
+        Title is required.
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" rows="3" formControlName="description" placeholder="Enter description"></textarea>
+      <div *ngIf="lessonEditForm.get('description')?.invalid && lessonEditForm.get('description')?.touched" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input id="category" type="text" class="form-control" formControlName="category" placeholder="Enter category">
+      <div *ngIf="lessonEditForm.get('category')?.invalid && lessonEditForm.get('category')?.touched" class="text-danger">
+        Category is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="level">Level</label>
+      <input id="level" type="number" class="form-control" formControlName="level" min="1" max="10" placeholder="Enter level">
+      <div *ngIf="lessonEditForm.get('level')?.invalid && lessonEditForm.get('level')?.touched" class="text-danger">
+        Level must be between 1 and 10.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="prerequisite">Prerequisite</label>
+      <input id="prerequisite" type="text" class="form-control" formControlName="prerequisite" placeholder="Enter prerequisites">
+    </div>
+
+    <div class="form-group">
+      <label for="tags">Tags</label>
+      <input id="tags" type="text" class="form-control" formControlName="tags" placeholder="Enter tags">
+    </div>
+
+    <div class="form-group">
+      <label for="copyright">Copyright</label>
+      <input id="copyright" type="text" class="form-control" formControlName="copyright" placeholder="Enter copyright">
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="onClickSubmit()" [disabled]="!lessonEditForm.valid">Submit</button>
+  </form>
+
+</div>

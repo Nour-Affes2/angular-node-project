@@ -6,7 +6,6 @@ import {ActivatedRoute} from "@angular/router";
   standalone: true,
   imports: [],
   templateUrl: './lesson-detail-page.component.html',
-  styleUrl: './lesson-detail-page.component.css'
 })
 export class LessonDetailPageComponent {
   readonly initialId: number | undefined;
